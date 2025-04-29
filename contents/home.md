@@ -1,6 +1,6 @@
 
 
-[![senli1073](https://img.shields.io/badge/senli1073-github-blue?logo=github)](https://github.com/guokejie)
+[![guokejie](https://github.com/guokejie)](https://github.com/guokejie)
 
 I am currently pursuing a Master's Degree in Computer Science, at School of Computer Science and Technology, Northeastern University, China.
 
