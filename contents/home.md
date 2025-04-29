@@ -5,7 +5,7 @@
 I am currently pursuing a Master's Degree in Computer Science, at School of Computer Science and Technology, Northeastern University, China.
 
 #### Email
-kejieguocs[at]gmail.com
+kejieguocs@gmail.com
 
 #### Education
 M.E., Computer Science and Technology, Northeastern University, 2024—2027 (expected).\
