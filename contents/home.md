@@ -12,5 +12,5 @@ M.E., Computer Science and Technology, Northeastern University, 2024—2027 (exp
 B.E., Artificial Intelligence, Tianjin University of Technology, 2020—2024.
 
 #### Experience
-I am currently an intern in backend development at NetEase
+I am currently an intern in backend development at NetEase.
 
