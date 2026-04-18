@@ -1,7 +1,6 @@
 # 郭科杰的个人网站
 
-这个项目使用 [MkDocs](https://www.mkdocs.org) 和 [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) 搭建，视觉风格对齐参考站点 `https://yang-xijie.github.io/`，顶部标签栏固定为：
-
+这个项目使用 [MkDocs](https://www.mkdocs.org) 和 [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) 搭建。
 - 首页
 - 专题
 - 思考
