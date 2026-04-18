@@ -2,3 +2,74 @@
   display: none;
 }
 
+.md-header {
+  box-shadow: 0 0 0.05rem rgba(0, 0, 0, 0.16), 0 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
+}
+
+.md-header__inner {
+  min-height: 2.55rem;
+}
+
+.md-header__title {
+  margin-left: 0.25rem;
+}
+
+.md-header__title .md-header__topic:first-child .md-ellipsis {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.06;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.md-header__title .md-header__topic:first-child .md-ellipsis::after {
+  content: "知其然，知其所以然";
+  margin-top: 0.09rem;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.5rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.md-header__button.md-icon,
+.md-header__option,
+.md-source {
+  margin-top: 0.08rem;
+}
+
+.md-header__button.md-icon svg,
+.md-source__icon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.md-source {
+  font-size: 0.58rem;
+}
+
+.md-source__repository {
+  line-height: 1.2;
+}
+
+.md-search__input::placeholder {
+  font-size: 0.68rem;
+}
+
+.md-tabs__link {
+  margin-top: 0.44rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-header__inner {
+    min-height: 2.25rem;
+  }
+
+  .md-header__title .md-header__topic:first-child .md-ellipsis::after {
+    margin-top: 0.08rem;
+    font-size: 0.46rem;
+  }
+}
