@@ -1,0 +1,118 @@
+site_name: 郭科杰的个人网站
+site_url: https://guokejie.github.io
+site_author: 郭科杰
+site_description: 郭科杰的个人网站
+
+nav:
+  - 首页: index.md
+  - 专题:
+    - TOPICS/index.md
+    - 效率: TOPICS/efficiency.md
+    - 后端开发:
+      - 设计模式:
+        - TOPICS/backend-development/design-patterns/index.md
+        - 迭代器模式: TOPICS/backend-development/design-patterns/iterator-pattern.md
+        - 责任链模式: TOPICS/backend-development/design-patterns/chain-of-responsibility-pattern.md
+        - 策略模式: TOPICS/backend-development/design-patterns/strategy-pattern.md
+      - DevOps:
+        - Docker: TOPICS/backend-development/devops/docker.md
+    - AI: TOPICS/ai.md
+    - 经济学: TOPICS/economics.md
+    - B站博主:
+      - TOPICS/bilibili-creators/index.md
+      - 雷宇讲故事: TOPICS/bilibili-creators/lei-yu.md
+      - 行长王德发: TOPICS/bilibili-creators/wang-defa.md
+      - 小Lin说: TOPICS/bilibili-creators/xiao-lin-shuo.md
+  - 思考:
+    - THOUGHTS/index.md
+    - 随笔:
+      - THOUGHTS/essays/index.md
+    - 阅读:
+      - THOUGHTS/reading/index.md
+      - 富爸爸与穷爸爸: THOUGHTS/reading/rich-dad-poor-dad.md
+      - 置身事内：中国政府与经济发展: THOUGHTS/reading/china-government-and-economic-development.md
+  - 归档: ARCHIVE/index.md
+  - 关于:
+    - ABOUT/index.md
+    - 教育经历: ABOUT/education.md
+    - 技术栈: ABOUT/tech-stack.md
+    - 个人经历: ABOUT/personal-experience.md
+
+theme:
+  name: material
+  logo: assets/Usagi.jpg
+  favicon: assets/Usagi.jpg
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: orange
+      toggle:
+        icon: material/weather-night
+        name: 切换至夜间模式
+    - scheme: slate
+      primary: indigo
+      accent: orange
+      toggle:
+        icon: material/weather-sunny
+        name: 切换至日间模式
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.indexes
+    - navigation.expand
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+  language: zh
+  icon:
+    repo: fontawesome/brands/github
+
+repo_url: https://github.com/guokejie/guokejie.github.io
+repo_name: guokejie.github.io
+edit_uri: edit/main/docs/
+
+copyright: 郭科杰 CC BY 4.0
+
+extra:
+  social:
+    - name: GitHub
+      icon: fontawesome/brands/github
+      link: https://github.com/guokejie
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+  - tags
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      linenums: true
+      auto_title: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - footnotes
+
+extra_javascript:
+  - mkdocs/javascripts/katex.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+  - mkdocs/css/no-footer.css
+  - mkdocs/css/unordered-list-symbols.css
+  - mkdocs/css/home.css

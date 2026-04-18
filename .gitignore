@@ -1,0 +1,6 @@
+.venv/
+site/
+__pycache__/
+.idea/
+.DS_Store
+guokejie.github.io/
