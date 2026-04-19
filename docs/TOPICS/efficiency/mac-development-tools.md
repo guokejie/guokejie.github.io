@@ -32,3 +32,17 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 source ~/.zshrc
 ```
 
+
+## iterm2
+
+### 快捷键
+
+- command + t：新建标签页
+- command + w：关闭标签页
+- command + 左右键：切换标签页
+- command + enter：切换全屏
+- command + d：分屏
+- command + ;：查看历史
+- ctrl + u：清楚当前行
+- ctrl + a：到行首
+- ctrl + e：到行尾
