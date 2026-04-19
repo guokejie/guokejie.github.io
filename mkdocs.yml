@@ -7,7 +7,9 @@ nav:
   - 首页: index.md
   - 专题:
     - TOPICS/index.md
-    - 效率: TOPICS/efficiency.md
+    - 效率:
+      - TOPICS/efficiency/index.md
+      - Mac 开发工具: TOPICS/efficiency/mac-development-tools.md
     - 分享:
       - TOPICS/share/index.md
       - 工作:
