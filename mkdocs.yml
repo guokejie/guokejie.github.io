@@ -92,6 +92,9 @@ plugins:
         - en
   - tags
 
+hooks:
+  - hooks/recent_articles.py
+
 markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
