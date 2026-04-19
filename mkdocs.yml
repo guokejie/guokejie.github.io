@@ -8,6 +8,11 @@ nav:
   - 专题:
     - TOPICS/index.md
     - 效率: TOPICS/efficiency.md
+    - 分享:
+      - TOPICS/share/index.md
+      - 工作:
+        - TOPICS/share/work/index.md
+        - 如何高效地实习: TOPICS/share/work/how-to-intern-efficiently.md
     - 后端开发:
       - 设计模式:
         - TOPICS/backend-development/design-patterns/index.md
