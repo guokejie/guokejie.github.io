@@ -23,7 +23,11 @@ nav:
         - 策略模式: TOPICS/backend-development/design-patterns/strategy-pattern.md
       - DevOps:
         - Docker: TOPICS/backend-development/devops/docker.md
-    - AI: TOPICS/ai.md
+    - AI:
+      - TOPICS/ai/index.md
+      - 基础:
+        - TOPICS/ai/basics/index.md
+        - AI 基础概念: TOPICS/ai/basics/ai-basic-concepts.md
     - 经济学: TOPICS/economics.md
     - B站博主:
       - TOPICS/bilibili-creators/index.md
