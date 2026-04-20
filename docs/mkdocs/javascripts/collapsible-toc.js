@@ -40,17 +40,15 @@
     }
   }
 
-  function setupCollapsibleToc(root) {
-    const toc = root.querySelector(".md-nav--secondary [data-md-component='toc']");
-
-    if (!toc || toc.dataset.collapsibleToc === "true") {
+  function setupCollapsibleToc(toc, tocIndex) {
+    if (toc.dataset.collapsibleToc === "true") {
       return;
     }
 
     toc.dataset.collapsibleToc = "true";
     toc.classList.add("toc-collapsible");
 
-    toc.querySelectorAll("li.md-nav__item").forEach((item, index) => {
+    toc.querySelectorAll("li.md-nav__item").forEach((item, itemIndex) => {
       const childNav = item.querySelector(":scope > nav.md-nav");
       const link = item.querySelector(":scope > a.md-nav__link");
 
@@ -60,7 +58,7 @@
 
       item.classList.add("toc-collapsible__item");
       childNav.classList.add("toc-collapsible__children");
-      childNav.id = childNav.id || `toc-collapsible-${index}`;
+      childNav.id = childNav.id || `toc-collapsible-${tocIndex}-${itemIndex}`;
 
       const toggle = document.createElement("button");
       toggle.type = "button";
@@ -84,7 +82,9 @@
   }
 
   function setup() {
-    setupCollapsibleToc(document);
+    document
+      .querySelectorAll(".md-nav--secondary [data-md-component='toc']")
+      .forEach(setupCollapsibleToc);
   }
 
   if (typeof document$ !== "undefined") {
