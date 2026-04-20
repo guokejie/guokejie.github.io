@@ -1,7 +1,29 @@
 (function () {
   const expandedClass = "toc-collapsible__item--expanded";
+  const storageKey = "mkdocs.toc.expanded";
 
-  function setExpanded(item, expanded) {
+  function readState() {
+    try {
+      return JSON.parse(sessionStorage.getItem(storageKey) || "{}");
+    } catch {
+      return {};
+    }
+  }
+
+  function writeState(state) {
+    try {
+      sessionStorage.setItem(storageKey, JSON.stringify(state));
+    } catch {
+      // Ignore storage failures, e.g. private browsing restrictions.
+    }
+  }
+
+  function itemKey(item) {
+    const link = item.querySelector(":scope > a.md-nav__link");
+    return `${location.pathname}#${link?.getAttribute("href") || ""}`;
+  }
+
+  function setExpanded(item, expanded, save) {
     const childNav = item.querySelector(":scope > nav.md-nav");
     const toggle = item.querySelector(":scope > .toc-collapsible__toggle");
 
@@ -12,6 +34,12 @@
     item.classList.toggle(expandedClass, expanded);
     childNav.hidden = !expanded;
     toggle.setAttribute("aria-expanded", String(expanded));
+
+    if (save) {
+      const state = readState();
+      state[itemKey(item)] = expanded;
+      writeState(state);
+    }
   }
 
   function setupCollapsibleToc(toc, tocIndex) {
@@ -21,6 +49,8 @@
 
     toc.dataset.collapsibleToc = "true";
     toc.classList.add("toc-collapsible");
+
+    const state = readState();
 
     toc.querySelectorAll("li.md-nav__item").forEach((item, itemIndex) => {
       const childNav = item.querySelector(":scope > nav.md-nav");
@@ -45,11 +75,11 @@
       toggle.addEventListener("click", (event) => {
         event.preventDefault();
         event.stopPropagation();
-        setExpanded(item, !item.classList.contains(expandedClass));
+        setExpanded(item, !item.classList.contains(expandedClass), true);
       });
 
       link.insertAdjacentElement("afterend", toggle);
-      setExpanded(item, false);
+      setExpanded(item, state[itemKey(item)] === true, false);
     });
   }
 

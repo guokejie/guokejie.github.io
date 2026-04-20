@@ -1,19 +1,54 @@
 (function () {
-  function collapseNavigation() {
-    document
-      .querySelectorAll(".md-nav:not(.md-nav--secondary) > .md-nav__list input.md-nav__toggle[type='checkbox']:checked")
-      .forEach((toggle) => {
-        toggle.checked = false;
+  const storageKey = "mkdocs.navigation.expanded";
 
-        const nestedNav = document.querySelector(`nav.md-nav[aria-labelledby="${toggle.id}_label"]`);
-        if (nestedNav) {
-          nestedNav.setAttribute("aria-expanded", "false");
+  function readState() {
+    try {
+      return JSON.parse(sessionStorage.getItem(storageKey) || "{}");
+    } catch {
+      return {};
+    }
+  }
+
+  function writeState(state) {
+    try {
+      sessionStorage.setItem(storageKey, JSON.stringify(state));
+    } catch {
+      // Ignore storage failures, e.g. private browsing restrictions.
+    }
+  }
+
+  function setExpanded(toggle, expanded) {
+    toggle.checked = expanded;
+
+    const nestedNav = toggle.closest("li.md-nav__item")?.querySelector(":scope > nav.md-nav");
+    if (nestedNav) {
+      nestedNav.setAttribute("aria-expanded", String(expanded));
+    }
+  }
+
+  function setupNavigation() {
+    const state = readState();
+
+    document
+      .querySelectorAll(".md-nav:not(.md-nav--secondary) > .md-nav__list input.md-nav__toggle[type='checkbox']")
+      .forEach((toggle) => {
+        setExpanded(toggle, state[toggle.id] === true);
+
+        if (toggle.dataset.collapsibleNavigation === "true") {
+          return;
         }
+
+        toggle.dataset.collapsibleNavigation = "true";
+        toggle.addEventListener("change", () => {
+          const nextState = readState();
+          nextState[toggle.id] = toggle.checked;
+          writeState(nextState);
+        });
       });
   }
 
   function setup() {
-    requestAnimationFrame(collapseNavigation);
+    requestAnimationFrame(setupNavigation);
   }
 
   if (typeof document$ !== "undefined") {
