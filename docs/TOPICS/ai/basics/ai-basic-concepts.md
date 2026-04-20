@@ -114,7 +114,7 @@
 
 ---
 
-## 高级用法（Reference）
+### 高级用法（Reference）
 
 前面提到，Claude Code 一开始只会把所有 Skill 的名称和描述交给模型，而不会直接把所有 Skill 的完整内容都塞进去。  
 这已经很省 token 了，但还不够极致。
@@ -181,7 +181,7 @@ Reference 可以理解为：
 
 ---
 
-## 高级用法（Script）
+### 高级用法（Script）
 
 除了读取资料，Agent Skill 还可以执行脚本，实现真正的自动化操作。
 
@@ -199,7 +199,7 @@ Reference 可以理解为：
 
 ---
 
-### Script 的执行流程
+#### Script 的执行流程
 
 假设用户输入：
 
@@ -247,13 +247,13 @@ Claude Code 更关心的是：
 
 ---
 
-## 渐进式披露机制
+### 渐进式披露机制
 
 Agent Skill 的设计，本质上是一种 **渐进式披露（Progressive Disclosure）** 结构。
 
 它通常可以分成三层：
 
-### 第一层：元数据层
+#### 第一层：元数据层
 
 包含所有 Skill 的：
 
@@ -263,7 +263,7 @@ Agent Skill 的设计，本质上是一种 **渐进式披露（Progressive Discl
 这一层始终对模型可见，相当于一个目录。  
 模型会先看这一层，判断当前问题适合使用哪个 Skill。
 
-### 第二层：指令层
+#### 第二层：指令层
 
 对应 `SKILL.md` 中除元数据外的正文内容。  
 只有当某个 Skill 被选中后，这一层才会被加载。
@@ -272,7 +272,7 @@ Agent Skill 的设计，本质上是一种 **渐进式披露（Progressive Discl
 
 - **按需加载**
 
-### 第三层：资源层
+#### 第三层：资源层
 
 这一层包括：
 
@@ -298,7 +298,7 @@ Agent Skill 的设计，本质上是一种 **渐进式披露（Progressive Discl
 
 ---
 
-## Agent Skill vs MCP
+### Agent Skill vs MCP
 
 很多人第一次接触 Agent Skill 时，会觉得它和 MCP 很像，因为两者都可以帮助模型连接和操作外部世界。
 

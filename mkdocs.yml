@@ -122,6 +122,7 @@ markdown_extensions:
 
 extra_javascript:
   - mkdocs/javascripts/katex.js
+  - mkdocs/javascripts/collapsible-toc.js
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
 
@@ -129,4 +130,5 @@ extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
   - mkdocs/css/no-footer.css
   - mkdocs/css/unordered-list-symbols.css
+  - mkdocs/css/collapsible-toc.css
   - mkdocs/css/home.css
