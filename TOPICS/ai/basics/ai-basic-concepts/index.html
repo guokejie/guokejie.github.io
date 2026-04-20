@@ -1407,7 +1407,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="高级用法（Reference）">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#reference_1" class="md-nav__link">
@@ -1439,6 +1440,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2404,7 +2410,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="高级用法（Reference）">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#reference_1" class="md-nav__link">
@@ -2436,6 +2443,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2703,7 +2715,7 @@
 <p>这样当然很有价值，但前提是模型得知道相关制度内容。<br />
 如果把所有财务制度、法律条文全都写进 <code>SKILL.md</code>，那么这个文件会变得非常臃肿。即使只是一次普通晨会，也会被迫加载大量根本用不到的内容。</p>
 <p>为了解决这个问题，Agent Skill 引入了 <strong>Reference</strong> 机制。</p>
-<h3 id="reference_1">Reference 是什么<a class="headerlink" href="#reference_1" title="Permanent link">&para;</a></h3>
+<h4 id="reference_1">Reference 是什么<a class="headerlink" href="#reference_1" title="Permanent link">&para;</a></h4>
 <p>Reference 可以理解为：<br />
 <strong>只有在满足特定条件时，才会被读取的补充资料文件。</strong></p>
 <p>比如，可以新增一个文件：</p>
@@ -2719,7 +2731,7 @@
 <li>根据手册内容判断会议中的金额是否超标，并提示审批要求</li>
 </ul>
 <hr />
-<h3 id="reference_2">Reference 的工作方式<a class="headerlink" href="#reference_2" title="Permanent link">&para;</a></h3>
+<h4 id="reference_2">Reference 的工作方式<a class="headerlink" href="#reference_2" title="Permanent link">&para;</a></h4>
 <p>假设会议中提到：</p>
 <blockquote>
 <p>老陈让小李预订 1210 元一晚的酒店</p>
@@ -2735,7 +2747,7 @@
 </ul>
 <p>而如果这只是一次和经费无关的技术复盘会，那么这个财务文件就不会被读取，也不会占用任何上下文 token。</p>
 <hr />
-<h3 id="reference_3">Reference 的核心特点<a class="headerlink" href="#reference_3" title="Permanent link">&para;</a></h3>
+<h4 id="reference_3">Reference 的核心特点<a class="headerlink" href="#reference_3" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>条件触发</strong></li>
 <li><strong>按需读取</strong></li>
