@@ -130,7 +130,7 @@
 
 为了解决这个问题，Agent Skill 引入了 **Reference** 机制。
 
-### Reference 是什么
+#### Reference 是什么
 
 Reference 可以理解为：  
 **只有在满足特定条件时，才会被读取的补充资料文件。**
@@ -150,7 +150,7 @@ Reference 可以理解为：
 
 ---
 
-### Reference 的工作方式
+#### Reference 的工作方式
 
 假设会议中提到：
 
@@ -170,7 +170,7 @@ Reference 可以理解为：
 
 ---
 
-### Reference 的核心特点
+#### Reference 的核心特点
 
 - **条件触发**
 - **按需读取**
