@@ -70,7 +70,6 @@ theme:
     - navigation.tabs
     - navigation.top
     - navigation.indexes
-    - navigation.expand
     - search.suggest
     - search.highlight
     - content.code.copy
@@ -123,6 +122,7 @@ markdown_extensions:
 extra_javascript:
   - mkdocs/javascripts/katex.js
   - mkdocs/javascripts/collapsible-toc.js
+  - mkdocs/javascripts/collapsible-navigation.js
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
 
