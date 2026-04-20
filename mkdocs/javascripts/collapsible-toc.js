@@ -14,32 +14,6 @@
     toggle.setAttribute("aria-expanded", String(expanded));
   }
 
-  function expandActiveBranch(toc) {
-    const hash = decodeURIComponent(window.location.hash || "");
-
-    if (!hash) {
-      return;
-    }
-
-    const activeLink = Array.from(toc.querySelectorAll("a.md-nav__link")).find(
-      (link) => link.getAttribute("href") === hash,
-    );
-
-    if (!activeLink) {
-      return;
-    }
-
-    activeLink.closest("li.md-nav__item")?.classList.add("toc-collapsible__item--current");
-
-    let parent = activeLink.parentElement;
-    while (parent && parent !== toc) {
-      if (parent.matches("li.md-nav__item")) {
-        setExpanded(parent, true);
-      }
-      parent = parent.parentElement;
-    }
-  }
-
   function setupCollapsibleToc(toc, tocIndex) {
     if (toc.dataset.collapsibleToc === "true") {
       return;
@@ -77,8 +51,6 @@
       link.insertAdjacentElement("afterend", toggle);
       setExpanded(item, false);
     });
-
-    expandActiveBranch(toc);
   }
 
   function setup() {
@@ -92,8 +64,4 @@
   } else {
     document.addEventListener("DOMContentLoaded", setup);
   }
-
-  window.addEventListener("hashchange", () => {
-    document.querySelectorAll(".md-nav--secondary [data-md-component='toc']").forEach(expandActiveBranch);
-  });
 })();
