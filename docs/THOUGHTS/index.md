@@ -4,4 +4,5 @@
 
 ## 当前目录
 
+- [电影](./movies/index.md)
 - [阅读](./reading/index.md)
