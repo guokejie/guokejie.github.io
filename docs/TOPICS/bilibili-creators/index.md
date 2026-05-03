@@ -4,5 +4,6 @@
 ## 目录
 
 - [雷宇讲故事](./lei-yu.md)
+- [史诗级韭菜](./shi-shi-ji-jiu-cai.md)
 - [行长王德发](./wang-defa.md)
 - [小Lin说](./xiao-lin-shuo.md)
