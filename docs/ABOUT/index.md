@@ -7,8 +7,9 @@
 
 ## 技术栈
 
-- Java
+- language: Java Python
 - IOS
+  
 
 ## 个人经历
 - 现在：快手做 AI 可观测
