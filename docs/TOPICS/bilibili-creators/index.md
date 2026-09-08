@@ -7,3 +7,4 @@
 - [史诗级韭菜](./shi-shi-ji-jiu-cai.md)
 - [行长王德发](./wang-defa.md)
 - [小Lin说](./xiao-lin-shuo.md)
+- [王帅真](./wang-shuai-zhen.md)
