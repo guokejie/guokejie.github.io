@@ -6,6 +6,7 @@
 
 - 效率
   - [Mac 开发工具](./efficiency/mac-development-tools.md)
+  - [宝藏收藏](./efficiency/treasure-collection.md)
 - 分享
   - 工作
     - [如何高效的实习](./share/work/how-to-intern-efficiently.md)

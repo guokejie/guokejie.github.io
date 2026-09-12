@@ -5,3 +5,4 @@
 ## 目录
 
 - [Mac 开发工具](./mac-development-tools.md)
+- [宝藏收藏](./treasure-collection.md)
