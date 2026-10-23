@@ -2993,10 +2993,10 @@ t &gt; T
 \]</div>
 <p>其中：</p>
 <ul>
-<li>$<span class="arithmatex">\(N\)</span>$ 是测试查询的数量；</li>
-<li>$<span class="arithmatex">\(\operatorname{rank}_i\)</span>$ 是第 $<span class="arithmatex">\(i\)</span>$ 个查询中正确答案的排名；</li>
+<li><span class="arithmatex">\(N\)</span> 是测试查询的数量；</li>
+<li><span class="arithmatex">\(\operatorname{rank}_i\)</span> 是第 <span class="arithmatex">\(i\)</span> 个查询中正确答案的排名；</li>
 <li>MR 越小越好；</li>
-<li>理想情况下，每个正确答案都排在第 1 位，此时 $<span class="arithmatex">\(\operatorname{MR}=1\)</span>$。</li>
+<li>理想情况下，每个正确答案都排在第 1 位，此时 <span class="arithmatex">\(\operatorname{MR}=1\)</span>。</li>
 </ul>
 <p>例如，给定时态知识图谱查询：</p>
 <div class="arithmatex">\[
@@ -3008,7 +3008,7 @@ t &gt; T
 <li>英国</li>
 <li>法国</li>
 </ol>
-<p>如果正确答案是“美国”，那么该查询的排名为 $<span class="arithmatex">\(\operatorname{rank}=1\)</span>$。如果另一个查询的正确答案排在第 10 位，那么它的排名就是 10。将所有测试查询的排名取平均，即可得到 MR。</p>
+<p>如果正确答案是“美国”，那么该查询的排名为 <span class="arithmatex">\(\operatorname{rank}=1\)</span>。如果另一个查询的正确答案排在第 10 位，那么它的排名就是 10。将所有测试查询的排名取平均，即可得到 MR。</p>
 <p>例如，三个查询的排名为：</p>
 <div class="arithmatex">\[
 1,\ 1,\ 100
@@ -3028,9 +3028,9 @@ t &gt; T
 \]</div>
 <p>其中：</p>
 <ul>
-<li>$<span class="arithmatex">\(N\)</span>$ 是测试查询的数量；</li>
-<li>$<span class="arithmatex">\(\operatorname{rank}_i\)</span>$ 是第 $<span class="arithmatex">\(i\)</span>$ 个查询中正确答案的排名；</li>
-<li>$<span class="arithmatex">\(1/\operatorname{rank}_i\)</span>$ 是该查询的倒数排名；</li>
+<li><span class="arithmatex">\(N\)</span> 是测试查询的数量；</li>
+<li><span class="arithmatex">\(\operatorname{rank}_i\)</span> 是第 <span class="arithmatex">\(i\)</span> 个查询中正确答案的排名；</li>
+<li><span class="arithmatex">\(1/\operatorname{rank}_i\)</span> 是该查询的倒数排名；</li>
 <li>MRR 越大越好。</li>
 </ul>
 <p>例如，三个测试查询中正确答案的排名分别为：</p>
@@ -3051,9 +3051,9 @@ t &gt; T
 \frac{1.6}{3}
 \approx 0.533
 \]</div>
-<p>这表示模型在这三个查询上的平均倒数排名约为 $<span class="arithmatex">\(0.533\)</span>$。</p>
+<p>这表示模型在这三个查询上的平均倒数排名约为 <span class="arithmatex">\(0.533\)</span>。</p>
 <h3 id="hitsk-k">Hits@K：正确答案进入前 K 名的比例<a class="headerlink" href="#hitsk-k" title="Permanent link">&para;</a></h3>
-<p>Hits@K 表示在所有测试查询中，正确答案进入前 $<span class="arithmatex">\(K\)</span>$ 名的比例：</p>
+<p>Hits@K 表示在所有测试查询中，正确答案进入前 <span class="arithmatex">\(K\)</span> 名的比例：</p>
 <div class="arithmatex">\[
 \operatorname{Hits@K}
 =
@@ -3063,9 +3063,9 @@ t &gt; T
 \]</div>
 <p>其中：</p>
 <ul>
-<li>$<span class="arithmatex">\(N\)</span>$ 是测试查询的数量；</li>
-<li>$<span class="arithmatex">\(\operatorname{rank}_i\)</span>$ 是第 $<span class="arithmatex">\(i\)</span>$ 个查询中正确答案的排名；</li>
-<li>$<span class="arithmatex">\(\mathbb{I}(\cdot)\)</span>$ 是指示函数，条件成立时等于 1，否则等于 0；</li>
+<li><span class="arithmatex">\(N\)</span> 是测试查询的数量；</li>
+<li><span class="arithmatex">\(\operatorname{rank}_i\)</span> 是第 <span class="arithmatex">\(i\)</span> 个查询中正确答案的排名；</li>
+<li><span class="arithmatex">\(\mathbb{I}(\cdot)\)</span> 是指示函数，条件成立时等于 1，否则等于 0；</li>
 <li>Hits@K 越大越好。</li>
 </ul>
 <p>例如，给定时态知识图谱查询：</p>
