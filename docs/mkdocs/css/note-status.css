@@ -1,0 +1,73 @@
+.note-status-row {
+  margin: -0.45rem 0 1.2rem;
+}
+
+.note-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.16rem 0.52rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+  vertical-align: 0.08em;
+  white-space: nowrap;
+}
+
+.note-status--completed {
+  color: #238636;
+  background: rgba(35, 134, 54, 0.1);
+}
+
+.note-status--in-progress {
+  color: #9a6700;
+  background: rgba(210, 153, 34, 0.12);
+}
+
+.note-status--abandoned {
+  color: #6e7781;
+  background: rgba(110, 119, 129, 0.1);
+}
+
+.home-timeline__meta .note-status {
+  margin-left: 0.4rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+[data-md-color-scheme="slate"] .note-status--completed {
+  color: #56d364;
+}
+
+[data-md-color-scheme="slate"] .note-status--in-progress {
+  color: #e3b341;
+}
+
+[data-md-color-scheme="slate"] .note-status--abandoned {
+  color: #8c959f;
+}
+
+.md-status--已完成::after,
+.md-status--进行中::after,
+.md-status--已废弃::after {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+.md-status--已完成::after {
+  background-color: #238636;
+}
+
+.md-status--进行中::after {
+  background-color: #bf8700;
+}
+
+.md-status--已废弃::after {
+  background-color: #6e7781;
+}

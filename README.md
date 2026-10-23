@@ -30,6 +30,18 @@ mkdocs serve
 
 命名统一使用小写英文和短横线，例如 `cover.webp`、`diagram-01.webp`、`screenshot-01.png`。
 
+## 笔记状态
+
+可在笔记顶部的 YAML 元数据中设置状态：
+
+```yaml
+---
+status: 进行中
+---
+```
+
+状态仅支持 `已完成`、`进行中`、`已废弃` 三种；最近文章未填写时默认为 `进行中`。
+
 ## 当前站点信息
 
 - 站点地址：`https://guokejie.github.io`

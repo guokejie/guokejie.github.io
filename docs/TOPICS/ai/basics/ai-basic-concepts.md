@@ -1,3 +1,7 @@
+---
+status: 进行中
+---
+
 # AI 基础概念
 
 ## Agent Skill

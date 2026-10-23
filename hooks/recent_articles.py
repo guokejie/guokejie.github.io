@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import html
+import re
 import subprocess
 from dataclasses import dataclass
 from datetime import datetime
@@ -15,6 +16,12 @@ MAX_ARTICLES = 5
 ARTICLE_ROOTS = {"TOPICS", "THOUGHTS"}
 DATE_KEYS = ("updated", "date", "publish_date", "created")
 MIN_ARTICLE_BODY_CHARS = 120
+DEFAULT_STATUS = "进行中"
+STATUS_CLASSES = {
+    "已完成": "completed",
+    "进行中": "in-progress",
+    "已废弃": "abandoned",
+}
 
 
 @dataclass(frozen=True)
@@ -23,6 +30,7 @@ class Article:
     title: str
     section: str
     updated_at: datetime
+    status: str
 
     @property
     def sort_key(self) -> tuple[float, str]:
@@ -30,15 +38,19 @@ class Article:
 
 
 def on_page_markdown(markdown: str, *, page: Any, config: Any, files: Any) -> str:
-    if page.file.src_path != "index.md" or PLACEHOLDER not in markdown:
+    if page.file.src_path == "index.md" and PLACEHOLDER in markdown:
+        articles = _collect_articles(
+            Path(config["docs_dir"]),
+            _collect_nav_paths(config.get("nav") or []),
+        )
+        rendered = _render_recent_articles(articles[:MAX_ARTICLES])
+        return markdown.replace(PLACEHOLDER, rendered)
+
+    status = page.meta.get("status")
+    if status is None:
         return markdown
 
-    articles = _collect_articles(
-        Path(config["docs_dir"]),
-        _collect_nav_paths(config.get("nav") or []),
-    )
-    rendered = _render_recent_articles(articles[:MAX_ARTICLES])
-    return markdown.replace(PLACEHOLDER, rendered)
+    return _add_status_to_note(markdown, _validate_status(status, page.file.src_path))
 
 
 def _collect_articles(docs_dir: Path, nav_paths: set[str] | None = None) -> list[Article]:
@@ -60,6 +72,7 @@ def _collect_articles(docs_dir: Path, nav_paths: set[str] | None = None) -> list
             title=_read_title(content, path),
             section=src_path.split("/", 1)[0],
             updated_at=_read_article_time(content, path),
+            status=_read_status(content, src_path),
         )
         articles.append(article)
 
@@ -148,18 +161,22 @@ def _read_article_time(content: str, path: Path) -> datetime:
     return datetime.fromtimestamp(path.stat().st_mtime)
 
 
+def _read_status(content: str, src_path: str) -> str:
+    metadata = _read_metadata(content)
+    return _validate_status(metadata.get("status", DEFAULT_STATUS), src_path)
+
+
+def _validate_status(value: Any, src_path: str) -> str:
+    status = str(value).strip()
+    if status not in STATUS_CLASSES:
+        choices = "、".join(STATUS_CLASSES)
+        raise ValueError(f"{src_path} 的 status 必须是：{choices}")
+
+    return status
+
+
 def _read_metadata_time(content: str) -> datetime | None:
-    if not content.startswith("---\n"):
-        return None
-
-    try:
-        _, metadata_text, _ = content.split("---", 2)
-    except ValueError:
-        return None
-
-    metadata = yaml.safe_load(metadata_text) or {}
-    if not isinstance(metadata, dict):
-        return None
+    metadata = _read_metadata(content)
 
     for key in DATE_KEYS:
         value = metadata.get(key)
@@ -168,6 +185,19 @@ def _read_metadata_time(content: str) -> datetime | None:
             return parsed
 
     return None
+
+
+def _read_metadata(content: str) -> dict[str, Any]:
+    if not content.startswith("---\n"):
+        return {}
+
+    try:
+        _, metadata_text, _ = content.split("---", 2)
+    except ValueError:
+        return {}
+
+    metadata = yaml.safe_load(metadata_text) or {}
+    return metadata if isinstance(metadata, dict) else {}
 
 
 def _parse_datetime(value: Any) -> datetime | None:
@@ -221,6 +251,7 @@ def _render_article(article: Article) -> str:
     day = html.escape(updated_at.strftime("%m-%d"))
     year = html.escape(updated_at.strftime("%Y"))
     time = html.escape(updated_at.strftime("%H:%M"))
+    status = _render_status(article.status)
 
     return f'''  <article class="home-timeline__item">
     <div class="home-timeline__date">
@@ -228,7 +259,7 @@ def _render_article(article: Article) -> str:
       <span class="home-timeline__year">{year}</span>
     </div>
     <div class="home-timeline__content">
-      <div class="home-timeline__meta">{section} / 更新于 {time}</div>
+      <div class="home-timeline__meta">{section} / 更新于 {time} {status}</div>
       <h3><a href="{link}">{title}</a></h3>
     </div>
   </article>'''
@@ -239,3 +270,19 @@ def _page_url(src_path: str) -> str:
         src_path = src_path[:-3]
 
     return f"./{src_path}/"
+
+
+def _render_status(status: str) -> str:
+    status_class = STATUS_CLASSES[status]
+    label = html.escape(status)
+    return f'<span class="note-status note-status--{status_class}">{label}</span>'
+
+
+def _add_status_to_note(markdown: str, status: str) -> str:
+    badge = f'<div class="note-status-row">{_render_status(status)}</div>'
+    title = re.search(r"^# .+$", markdown, flags=re.MULTILINE)
+    if title is None:
+        return f"{badge}\n\n{markdown}"
+
+    insert_at = title.end()
+    return f"{markdown[:insert_at]}\n\n{badge}{markdown[insert_at:]}"
