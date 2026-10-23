@@ -96,10 +96,6 @@ edit_uri: edit/main/docs/
 copyright: 郭科杰 CC BY 4.0 · 知其然知其所以然
 
 extra:
-  status:
-    已完成: 已完成
-    进行中: 进行中
-    已废弃: 已废弃
   social:
     - name: GitHub
       icon: fontawesome/brands/github

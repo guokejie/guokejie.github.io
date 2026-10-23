@@ -16,7 +16,6 @@ MAX_ARTICLES = 5
 ARTICLE_ROOTS = {"TOPICS", "THOUGHTS"}
 DATE_KEYS = ("updated", "date", "publish_date", "created")
 MIN_ARTICLE_BODY_CHARS = 120
-DEFAULT_STATUS = "进行中"
 STATUS_CLASSES = {
     "已完成": "completed",
     "进行中": "in-progress",
@@ -30,7 +29,6 @@ class Article:
     title: str
     section: str
     updated_at: datetime
-    status: str
 
     @property
     def sort_key(self) -> tuple[float, str]:
@@ -72,7 +70,6 @@ def _collect_articles(docs_dir: Path, nav_paths: set[str] | None = None) -> list
             title=_read_title(content, path),
             section=src_path.split("/", 1)[0],
             updated_at=_read_article_time(content, path),
-            status=_read_status(content, src_path),
         )
         articles.append(article)
 
@@ -161,11 +158,6 @@ def _read_article_time(content: str, path: Path) -> datetime:
     return datetime.fromtimestamp(path.stat().st_mtime)
 
 
-def _read_status(content: str, src_path: str) -> str:
-    metadata = _read_metadata(content)
-    return _validate_status(metadata.get("status", DEFAULT_STATUS), src_path)
-
-
 def _validate_status(value: Any, src_path: str) -> str:
     status = str(value).strip()
     if status not in STATUS_CLASSES:
@@ -251,7 +243,6 @@ def _render_article(article: Article) -> str:
     day = html.escape(updated_at.strftime("%m-%d"))
     year = html.escape(updated_at.strftime("%Y"))
     time = html.escape(updated_at.strftime("%H:%M"))
-    status = _render_status(article.status)
 
     return f'''  <article class="home-timeline__item">
     <div class="home-timeline__date">
@@ -259,7 +250,7 @@ def _render_article(article: Article) -> str:
       <span class="home-timeline__year">{year}</span>
     </div>
     <div class="home-timeline__content">
-      <div class="home-timeline__meta">{section} / 更新于 {time} {status}</div>
+      <div class="home-timeline__meta">{section} / 更新于 {time}</div>
       <h3><a href="{link}">{title}</a></h3>
     </div>
   </article>'''
@@ -279,10 +270,13 @@ def _render_status(status: str) -> str:
 
 
 def _add_status_to_note(markdown: str, status: str) -> str:
-    badge = f'<div class="note-status-row">{_render_status(status)}</div>'
+    header_meta = (
+        f'<div class="note-status-row">{_render_status(status)}</div>\n\n'
+        '<hr class="note-title-divider">'
+    )
     title = re.search(r"^# .+$", markdown, flags=re.MULTILINE)
     if title is None:
-        return f"{badge}\n\n{markdown}"
+        return f"{header_meta}\n\n{markdown}"
 
     insert_at = title.end()
-    return f"{markdown[:insert_at]}\n\n{badge}{markdown[insert_at:]}"
+    return f"{markdown[:insert_at]}\n\n{header_meta}{markdown[insert_at:]}"

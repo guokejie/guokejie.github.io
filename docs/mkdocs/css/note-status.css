@@ -1,5 +1,10 @@
 .note-status-row {
-  margin: -0.45rem 0 1.2rem;
+  margin: -0.45rem 0 0.85rem;
+}
+
+.md-typeset .note-title-divider {
+  margin: 0 0 1.5rem;
+  border-bottom-color: var(--md-default-fg-color--lightest);
 }
 
 .note-status {
@@ -31,13 +36,6 @@
   background: rgba(110, 119, 129, 0.1);
 }
 
-.home-timeline__meta .note-status {
-  margin-left: 0.4rem;
-  font-size: 0.62rem;
-  letter-spacing: 0.02em;
-  text-transform: none;
-}
-
 [data-md-color-scheme="slate"] .note-status--completed {
   color: #56d364;
 }
@@ -50,24 +48,8 @@
   color: #8c959f;
 }
 
-.md-status--已完成::after,
-.md-status--进行中::after,
-.md-status--已废弃::after {
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 50%;
-  mask-image: none;
-  -webkit-mask-image: none;
-}
-
-.md-status--已完成::after {
-  background-color: #238636;
-}
-
-.md-status--进行中::after {
-  background-color: #bf8700;
-}
-
-.md-status--已废弃::after {
-  background-color: #6e7781;
+.md-status--已完成,
+.md-status--进行中,
+.md-status--已废弃 {
+  display: none;
 }
