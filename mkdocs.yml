@@ -29,6 +29,9 @@ nav:
       - 基础:
         - TOPICS/ai/basics/index.md
         - AI 基础概念: TOPICS/ai/basics/ai-basic-concepts.md
+    - 读研:
+      - TOPICS/postgraduate-study/index.md
+      - 时态知识图谱补全综述: TOPICS/postgraduate-study/temporal-knowledge-graph-completion-survey.md
     - 经济学: TOPICS/economics.md
     - B站博主:
       - TOPICS/bilibili-creators/index.md
