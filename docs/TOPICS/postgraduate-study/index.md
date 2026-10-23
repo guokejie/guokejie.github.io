@@ -5,3 +5,4 @@
 ## 目录
 
 - [时态知识图谱补全综述](./temporal-knowledge-graph-completion-survey.md)
+- [TransE](./transe.md)

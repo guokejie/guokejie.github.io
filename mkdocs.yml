@@ -32,6 +32,7 @@ nav:
     - 读研:
       - TOPICS/postgraduate-study/index.md
       - 时态知识图谱补全综述: TOPICS/postgraduate-study/temporal-knowledge-graph-completion-survey.md
+      - TransE: TOPICS/postgraduate-study/transe.md
     - 经济学: TOPICS/economics.md
     - B站博主:
       - TOPICS/bilibili-creators/index.md
