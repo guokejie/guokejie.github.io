@@ -6,3 +6,4 @@
 
 - [时态知识图谱补全综述](./temporal-knowledge-graph-completion-survey.md)
 - [TransE](./transe.md)
+- [[2020] TeRo](./2020-tero.md)
