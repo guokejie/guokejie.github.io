@@ -1510,19 +1510,19 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务分类
+        名词解释
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="任务分类">
+    <nav class="md-nav" aria-label="名词解释">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        内插
+        打分函数
       
     </span>
   </a>
@@ -1533,7 +1533,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        外推
+        负采样损失函数
       
     </span>
   </a>
@@ -1549,6 +1549,45 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
+        任务分类
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="任务分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        内插
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        外推
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         数据集
       
     </span>
@@ -1557,7 +1596,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         评估指标
@@ -2828,19 +2867,19 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        任务分类
+        名词解释
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="任务分类">
+    <nav class="md-nav" aria-label="名词解释">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        内插
+        打分函数
       
     </span>
   </a>
@@ -2851,7 +2890,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        外推
+        负采样损失函数
       
     </span>
   </a>
@@ -2867,6 +2906,45 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
+        任务分类
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="任务分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        内插
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        外推
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         数据集
       
     </span>
@@ -2875,7 +2953,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         评估指标
@@ -2954,21 +3032,101 @@
 
 <hr class="note-title-divider">
 
-<h2 id="_2">任务分类<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_2">名词解释<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">打分函数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>打分函数回答的是：<strong>这条事实与模型匹配得怎么样？</strong></p>
+<p>以 TeRo 这篇论文为例，论文的时间点评分函数是：</p>
+<div class="arithmatex">\[
+f(s,r,o,t) = \left\lVert s_t + r - \overline{o_t} \right\rVert
+\]</div>
+<p>逐个解释：</p>
+<ul>
+<li><span class="arithmatex">\(s\)</span>：头实体的 embedding；</li>
+<li><span class="arithmatex">\(r\)</span>：关系 embedding；</li>
+<li><span class="arithmatex">\(o\)</span>：尾实体 embedding；</li>
+<li><span class="arithmatex">\(t\)</span>：查询时间，例如 2014 年；</li>
+<li><span class="arithmatex">\(s_t,o_t\)</span>：两个实体经过时间旋转后的表示；</li>
+<li><span class="arithmatex">\(\overline{o_t}\)</span>：目标实体再取共轭；</li>
+<li><span class="arithmatex">\(\lVert\cdot\rVert\)</span>：衡量两边差距的大小。</li>
+</ul>
+<p>它检验的是：</p>
+<div class="arithmatex">\[
+s_t + r \quad\text{与}\quad \overline{o_t}
+\]</div>
+<p>是否接近。距离越小，模型认为这条事实越可信。</p>
+<p>打分函数本身只计算距离，并不知道当前输入被标记为正例还是负例。</p>
+<h3 id="_4">负采样损失函数<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>负采样损失函数回答的是：<strong>这些距离是否符合训练要求？</strong></p>
+<p>训练时，我们希望：</p>
+<ul>
+<li>真实事实 → 距离小；</li>
+<li>负样本 → 距离大。</li>
+</ul>
+<p>损失函数就是衡量模型离这个目标还有多远。公式是：</p>
+<div class="arithmatex">\[
+\mathcal L(\xi)
+= -\log\sigma\!\left(\gamma-f(\xi)\right)
+- \frac{1}{\eta}\sum_{j=1}^{\eta}
+\log\sigma\!\left(f(\xi_j^-)-\gamma\right)
+\]</div>
+<p>各符号的含义如下：</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(\xi\)</span></td>
+<td>一条真实的训练事实，即正例</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\xi_j^-\)</span></td>
+<td>与它对应的第 <span class="arithmatex">\(j\)</span> 个负样本</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(f(\xi)\)</span></td>
+<td>用前面的打分函数计算正例距离</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(f(\xi_j^-)\)</span></td>
+<td>用同一个打分函数计算负例距离</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\eta\)</span></td>
+<td>每条正例对应的负样本数量</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\gamma\)</span></td>
+<td>人为设置的距离分界参数</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\sigma(x)\)</span></td>
+<td>Sigmoid 函数，即 <span class="arithmatex">\(\frac{1}{1+e^{-x}}\)</span>；随 <span class="arithmatex">\(x\)</span> 增大而接近 1</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal L\)</span></td>
+<td>最终训练损失，越小越好</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">任务分类<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>时态知识图谱补全任务通常分为内插和外推两类。</p>
-<h3 id="_3">内插<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_6">内插<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>内插（Interpolation，也称插值）是指推断已观测时间范围内缺失的事实，即目标时间满足：</p>
 <div class="arithmatex">\[
 t_0 \leq t \leq T
 \]</div>
 <p>模型可以利用目标时间之前和之后的已知事实。例如，已知 2020—2024 年的部分事件，补全“2022 年，A 国与哪个国家进行了会谈？”</p>
-<h3 id="_4">外推<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_7">外推<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>外推（Extrapolation）是指根据已观测的历史事实，预测观测截止时间之后的事实，即目标时间满足：</p>
 <div class="arithmatex">\[
 t &gt; T
 \]</div>
 <p>例如，已知截至 2024 年底的事件，预测“2025 年 1 月，A 国将与哪个国家进行会谈？”</p>
-<h2 id="_5">数据集<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_8">数据集<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -3017,7 +3175,7 @@ t &gt; T
 <li><strong>ICEWS05-15</strong>：用于观察跨年度的长期变化；其覆盖 2005—2015 年，共 11 年，并以天为时间单位。</li>
 <li><strong>ICEWS18</strong>：用于研究有更多实体参与的事件预测。</li>
 </ul>
-<h2 id="_6">评估指标<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_9">评估指标<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <p>在链接预测任务中，模型会为所有候选实体打分，再按可信度从高到低排序，由此得到正确实体的排名。常用评估指标包括 MR、MRR 和 Hits@K。</p>
 <h3 id="mr">MR：平均排名<a class="headerlink" href="#mr" title="Permanent link">&para;</a></h3>
 <p>MR（Mean Rank）用于衡量正确答案在候选结果中的平均排名：</p>
